@@ -30,7 +30,7 @@ if (isset($_POST['email']) and $_POST['email'] != "") {
     }
 
     // Check if the email exists in the database
-    $sSql = "SELECT * FROM `{TP}users` WHERE `email` = '" . $email . "'";
+    $sSql = "SELECT * FROM `{TP}users` WHERE `email` = FROM_BASE64('" . base64_encode($email) . "')";
     $rRow = $database->query($sSql);
     if ($rRow->numRows() > 0) {
 
